@@ -22,6 +22,14 @@ const FriendsList = () => {
       .catch(err => console.log(err))
   }
 
+  const deleteFriend = id => {
+    axiosWithAuth().delete(`/friends/${id}`)
+      .then(res => {
+        setFriends(res.data)
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div>
       <FriendForm addFriend={addFriend} />
@@ -31,6 +39,7 @@ const FriendsList = () => {
             <h2>{friend.name}</h2>
             <p>Age: {friend.age}</p>
             <p>{friend.email}</p>
+            <button onClick={() => deleteFriend(friend.id)}>Delete friend</button>
           </div>
         )
       })}

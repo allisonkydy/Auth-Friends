@@ -23,35 +23,41 @@ const FriendForm = (props) => {
   }, [friendToEdit])
 
   return (
-    <div>
+    <div className="friend-form">
       <form onSubmit={handleSubmit}>
-        <label>
-          Name: 
+        <div className="form-field">
+          <label>
+            Name: 
+          </label>
           <input
             type="text"
             name="name"
             value={newFriend.name}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Age: 
-          <input
-            type="number"
-            name="age"
-            value={newFriend.age}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Email: 
-          <input
-            type="email"
-            name="email"
-            value={newFriend.email}
-            onChange={handleChange}
-          />
-        </label>
+        </div>
+        <div className="form-field">
+          <label>
+            Age: 
+          </label>
+            <input
+              type="number"
+              name="age"
+              value={newFriend.age}
+              onChange={handleChange}
+            />
+        </div>
+        <div className="form-field">
+          <label>
+            Email: 
+          </label>
+            <input
+              type="email"
+              name="email"
+              value={newFriend.email}
+              onChange={handleChange}
+            />
+        </div>
         <button>{friendToEdit ? "edit friend" : "add friend"}</button>
       </form>
     </div>

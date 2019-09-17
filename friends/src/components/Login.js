@@ -20,7 +20,7 @@ const Login = props => {
   }
 
   return (
-    <div>
+    <div className="login">
       <form onSubmit={handleSubmit}>
         <input
           type="text"

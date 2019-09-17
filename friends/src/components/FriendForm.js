@@ -17,7 +17,6 @@ const FriendForm = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        Add New Friend
         <label>
           Name: 
           <input

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const FriendForm = (props) => {
-  const { addFriend } = props;
+  const { addFriend, editFriend, friendToEdit } = props;
   const [newFriend, setNewFriend] = useState({ name: "", age: "", email: "" })
 
   const handleChange = e => {
@@ -10,9 +10,17 @@ const FriendForm = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addFriend({...newFriend, id: Date.now() })
+    if(friendToEdit) {
+      editFriend(newFriend)
+    } else {
+      addFriend({...newFriend, id: Date.now() })
+    }
     setNewFriend({ name: "", age: "", email: "" });
   }
+
+  useEffect(() => {
+    if (friendToEdit) setNewFriend({...friendToEdit})
+  }, [friendToEdit])
 
   return (
     <div>
@@ -44,7 +52,7 @@ const FriendForm = (props) => {
             onChange={handleChange}
           />
         </label>
-        <button>Add friend</button>
+        <button>{friendToEdit ? "edit friend" : "add friend"}</button>
       </form>
     </div>
   )

@@ -14,6 +14,7 @@ const Login = props => {
       .then(res => {
         localStorage.setItem('token', res.data.payload)
         props.history.push('/friends')
+        props.login();
       })
       .catch(err => console.log(err))
     setCredentials({ username: "", password: "" })
